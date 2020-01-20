@@ -1,24 +1,29 @@
 const fs = require('fs')
 import * as path from 'path'
-// import * as fs from 'fs'
 
 export default class BookQuery {
   bookArray: string[]
-  name: string
   dictionary:any
-  book: string 
+  protected _book: string = "../../data/oliver-twist.txt" 
   
-  constructor(name: string) {
-    this.book = "../../data/oliver-twist.txt"
+  constructor(public name: string) {
     this.name = name
     this.bookArray = []
     this.dictionary = {}
+  }
+// Gettter gives option to find out what book we are using
+  get book() {
+    return this._book 
+  }
+// Setter allows for changing reference book
+  set book(value:string) {
+    this._book = value
   }
 
   readBook() :Promise<string[]>{
     let self = this
     return new Promise((resolve, reject) =>{
-      fs.readFile(path.join(__dirname, this.book), 'utf8', function (error:{}, data:string) {
+      fs.readFile(path.join(__dirname, this._book), 'utf8', function (error:{}, data:string) {
         if (error) reject(error)
         self.bookArray = data.split(/\r\n|\r|\n/).join(' ').split(/\W+/)
         resolve(self.bookArray)
