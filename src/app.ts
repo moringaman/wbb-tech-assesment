@@ -1,12 +1,15 @@
-import express, { Application, Request, Response, NextFunction} from 'express'
+import express, { Application, Request, Response, NextFunction, response} from 'express'
+import nameController from './controllers/nameController'
 
-const server: Application = express()
+const app: Application = express()
 const port = process.env.PORT || 3000
 
-server.get('/', (req: Request, res:Response, next: NextFunction) => {
-  res.send('Hello there')
+app.get('/', (req: Request, res:Response ) => {
+  res.send('Welcome to the Oliver Name Counter API')
 })
 
-server.listen(port, () => {
+app.get('/name-count', nameController)
+
+app.listen(port, () => {
   console.log("server up on port: ", port)
 })
