@@ -25,5 +25,5 @@ To run part 1 of the assessment use command `npm run part1` and check file ./dat
 
 #### Part 2
 
-*. Run the API server in part 2 of the assessment by running `npm build` followed by `npm start` 
-*. To test enter url http://localhost:3000/name-count?name=name-choice in the browser as a search term
+* Run the API server in part 2 of the assessment by running `npm build` followed by `npm start` 
+* To test enter url http://localhost:3000/name-count?name=name-choice in the browser as a search term
